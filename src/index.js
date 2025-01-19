@@ -1,7 +1,6 @@
 import '@fontsource/oxygen'
 import '@/index.css'
-import { getWeatherData, processData } from './api/weather.js'
+import { getWeather } from './api/weather.js'
 
-const data = await getWeatherData('Nuevo Leon,Mexico')
-const weather = processData(data)
+const weather = await getWeather('Nuevo Leon,Mexico')
 console.log({ weather })

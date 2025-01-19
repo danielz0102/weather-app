@@ -1,7 +1,18 @@
-export async function getWeatherData(location) {
+export async function getWeather(location) {
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=K3PYDAWZMZ3FRD6XP4PSXRW6S`
+  const data = await getData(url)
+
+  console.log({ data })
+
+  const { resolvedAddress, description, currentConditions, days } = data
+
+  return { resolvedAddress, description, currentConditions, days }
+}
+
+async function getData(url) {
   try {
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=K3PYDAWZMZ3FRD6XP4PSXRW6S`
     const response = await fetch(url)
+    console.log(response)
 
     if (!response.ok) {
       throw new Error(response.status)
@@ -11,9 +22,4 @@ export async function getWeatherData(location) {
   } catch (error) {
     console.error(error)
   }
-}
-
-export function processData(data) {
-  const { resolvedAddress, description, currentConditions, days } = data
-  return { resolvedAddress, description, currentConditions, days }
 }
