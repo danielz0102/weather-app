@@ -35,5 +35,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@fontsource/oxygen": "5.1.1"
   }
 }

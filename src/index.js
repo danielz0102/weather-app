@@ -1,3 +1,4 @@
+import '@fontsource/oxygen'
 import '@/index.css'
 import { getWeatherData, processData } from './api/weather.js'
 
