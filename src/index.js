@@ -1,6 +1,5 @@
 import '@fontsource/oxygen'
 import '@/index.css'
-import { getWeather } from './api/weather.js'
+import { form } from './components/form/form.js'
 
-const weather = await getWeather('Nuevo Leon,Mexico')
-console.log({ weather })
+document.querySelector('#app').appendChild(form)
