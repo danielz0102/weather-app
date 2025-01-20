@@ -1,11 +1,9 @@
 import './form.css'
 import formHTML from './form.html'
 import { getWeather } from '@/api/weather.js'
+import { parseHtml } from '@/modules/utils.js'
 
-const container = document.createElement('div')
-container.innerHTML = formHTML
-
-const form = container.firstChild
+const form = parseHtml(formHTML)
 const searchBtn = form.querySelector('#searchBtn')
 const locationInput = form.querySelector('#locationInput')
 
