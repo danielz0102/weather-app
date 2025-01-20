@@ -3,9 +3,9 @@ import formHTML from './form.html'
 import { getWeather } from '@/api/weather.js'
 import { parseHtml } from '@/modules/utils.js'
 
-const form = parseHtml(formHTML)
-const searchBtn = form.querySelector('#searchBtn')
-const locationInput = form.querySelector('#locationInput')
+const Form = parseHtml(formHTML)
+const searchBtn = Form.querySelector('#searchBtn')
+const locationInput = Form.querySelector('#locationInput')
 
 searchBtn.addEventListener('click', () => searchLocation(locationInput.value))
 
@@ -22,4 +22,4 @@ async function searchLocation(location) {
   }
 }
 
-export { form }
+export { Form }
