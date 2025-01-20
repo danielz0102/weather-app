@@ -1,5 +1,5 @@
 export const parseHtml = (str) => {
-  const parser = DOMParser()
+  const parser = new DOMParser()
   const doc = parser.parseFromString(str, 'text/html')
   return doc.firstChild
 }
