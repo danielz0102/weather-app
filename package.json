@@ -26,20 +26,6 @@
     "webpack-dev-server": "5.2.0",
     "webpack-merge": "6.0.1"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true
-    },
-    "extends": [
-      "./node_modules/standard/eslintrc.json",
-      "prettier"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "dependencies": {
     "@fontsource/oxygen": "5.1.1"
   }
