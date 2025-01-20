@@ -4,8 +4,7 @@ export async function getWeather(location) {
 
   if (data instanceof Error) return data
 
-  const { resolvedAddress, description, currentConditions, days } = data
-  return { resolvedAddress, description, currentConditions, days }
+  return data.currentConditions.temp
 }
 
 async function getData(url) {
