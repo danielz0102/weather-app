@@ -19,7 +19,8 @@ locationInput.addEventListener('keydown', (event) => {
 async function searchLocation(location) {
   if (location) {
     const weather = await getWeather(location)
-    CityCard.set(location, weather)
+    console.log(weather)
+    CityCard.set(weather.address, weather.temp)
   }
 }
 

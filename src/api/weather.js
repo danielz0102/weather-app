@@ -4,7 +4,7 @@ export async function getWeather(location) {
 
   if (data instanceof Error) return data
 
-  return data.currentConditions.temp
+  return { address: data.resolvedAddress, temp: data.currentConditions.temp }
 }
 
 async function getData(url) {

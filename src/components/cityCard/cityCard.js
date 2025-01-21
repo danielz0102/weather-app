@@ -12,6 +12,6 @@ CityCard.set = (city, weather) => {
   CityCard.querySelector('.weather').textContent = `${weather}°`
 }
 
-CityCard.set(DEFAULT_CITY, weather)
+CityCard.set(weather.address, weather.temp)
 
 export { CityCard }
