@@ -1,7 +1,8 @@
 export const parseHtml = (str) => {
-  const parser = new DOMParser()
-  const doc = parser.parseFromString(str, 'text/html')
-  return doc.firstChild
+  const container = document.createElement('div')
+  container.innerHTML = str
+
+  return container.firstElementChild
 }
 
 export const getCelcius = (fahrenheit) => {
