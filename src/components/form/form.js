@@ -18,6 +18,11 @@ locationInput.addEventListener('keydown', (event) => {
 
 async function searchLocation(location) {
   if (location) {
+    const Temp = CityCard.querySelector('.temp')
+    Temp.textContent = ''
+    Temp.classList.add('loading')
+    Temp.classList.remove('temp')
+
     const weather = await getWeather(location)
 
     if (weather instanceof Error) {

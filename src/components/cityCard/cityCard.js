@@ -10,7 +10,6 @@ const UNITS = {
   C: 'C',
   F: 'F',
 }
-const weather = await getWeather(DEFAULT_CITY)
 
 CityCard.set = (city, weather) => {
   const title = CityCard.querySelector('h2')
@@ -32,7 +31,9 @@ CityCard.showError = (msg) => {
   title.textContent = msg
   title.classList.add('error')
 
-  CityCard.querySelector('.weather').textContent = ''
+  Temp.textContent = ''
+  Temp.classList.remove('loading')
+  Temp.classList.add('temp')
 }
 
 Temp.unit = UNITS.F
@@ -41,15 +42,9 @@ Temp.set = (degrees, unit) => {
   Temp.textContent = `${degrees}°${unit}`
   Temp.degrees = Number(degrees)
   Temp.unit = unit
-}
 
-if (weather instanceof Error) {
-  const status = weather.status
-  CityCard.showError(
-    status === 400 ? 'Location not found' : 'Sorry, something went wrong',
-  )
-} else {
-  CityCard.set(weather.address, weather.temp)
+  Temp.classList.remove('loading')
+  Temp.classList.add('temp')
 }
 
 Temp.addEventListener('click', () => {
@@ -62,5 +57,23 @@ Temp.addEventListener('click', () => {
   Temp.unit = UNITS.F
   Temp.set(getFarhenheit(Temp.degrees), Temp.unit)
 })
+
+async function init() {
+  Temp.classList.add('loading')
+  Temp.classList.remove('temp')
+
+  const weather = await getWeather(DEFAULT_CITY)
+
+  if (weather instanceof Error) {
+    const status = weather.status
+    CityCard.showError(
+      status === 400 ? 'Location not found' : 'Sorry, something went wrong',
+    )
+  } else {
+    CityCard.set(weather.address, weather.temp)
+  }
+}
+
+init()
 
 export { CityCard }
