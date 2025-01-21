@@ -18,6 +18,10 @@
   }
 }
 
+.error {
+  color: #e61c1c;
+}
+
 .weather {
   font-size: 3rem;
   background: var(--main-gradient);

@@ -19,7 +19,15 @@ locationInput.addEventListener('keydown', (event) => {
 async function searchLocation(location) {
   if (location) {
     const weather = await getWeather(location)
-    console.log(weather)
+
+    if (weather instanceof Error) {
+      const status = weather.status
+      CityCard.showError(
+        status === 400 ? 'Location not found' : 'Sorry, something went wrong',
+      )
+      return
+    }
+
     CityCard.set(weather.address, weather.temp)
   }
 }
