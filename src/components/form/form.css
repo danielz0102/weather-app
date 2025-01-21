@@ -4,7 +4,7 @@
 
   & h1 {
     margin-block: 16px;
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
   & label {
@@ -16,13 +16,15 @@
 .row {
   display: flex;
   border: none;
+  border: 1px solid transparent;
   border-radius: 8px;
-  background-color: #68bfd1;
+  background-color: #fff;
   padding: 8px 0 8px 16px;
-  transition: box-shadow 0.25s;
+
+  transition: border-color 0.25s;
 
   &:has(input:focus) {
-    box-shadow: inset 0 0 2px 2px #fff;
+    border-color: #000;
   }
 }
 
@@ -36,11 +38,11 @@
   flex: 1;
   font-size: 0.9rem;
   outline: none;
-  color: #fff;
+  color: #000;
   font-weight: bold;
 
   &::placeholder {
-    color: #fff;
+    color: #00000050;
   }
 }
 
@@ -51,8 +53,8 @@
   align-items: center;
 
   &:hover {
-    & .icon {
-      opacity: 0.5;
+    & .icon path {
+      fill: #0093e9;
     }
   }
 }
@@ -60,5 +62,8 @@
 .icon {
   width: 20px;
   height: 20px;
-  transition: opacity 0.25s;
+
+  & path {
+    transition: fill 0.25s;
+  }
 }
