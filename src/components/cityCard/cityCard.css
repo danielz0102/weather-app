@@ -13,7 +13,7 @@
 
 .weather {
   font-size: 3rem;
-  background: linear-gradient(to right, #0093e9 0%, #80d0c7 100%);
+  background: var(--main-gradient);
   background-clip: text;
   color: transparent;
 }
