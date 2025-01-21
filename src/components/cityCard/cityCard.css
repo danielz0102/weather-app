@@ -6,8 +6,15 @@
   padding: 32px;
   text-align: center;
 
+  width: 500px;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   & h2 {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
 }
 
