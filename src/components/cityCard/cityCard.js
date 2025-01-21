@@ -7,11 +7,11 @@ const CityCard = parseHtml(cityCard)
 const DEFAULT_CITY = 'London'
 const weather = await getWeather(DEFAULT_CITY)
 
-CityCard.setInfo = (city, weather) => {
+CityCard.set = (city, weather) => {
   CityCard.querySelector('h2').textContent = city
   CityCard.querySelector('.weather').textContent = `${weather}°`
 }
 
-CityCard.setInfo(DEFAULT_CITY, weather)
+CityCard.set(DEFAULT_CITY, weather)
 
 export { CityCard }

@@ -2,6 +2,7 @@ import './form.css'
 import formHTML from './form.html'
 import { getWeather } from '@/api/weather.js'
 import { parseHtml } from '@/modules/utils.js'
+import { CityCard } from '@/components/cityCard/cityCard.js'
 
 const Form = parseHtml(formHTML)
 const searchBtn = Form.querySelector('#searchBtn')
@@ -18,7 +19,7 @@ locationInput.addEventListener('keydown', (event) => {
 async function searchLocation(location) {
   if (location) {
     const weather = await getWeather(location)
-    console.log(weather)
+    CityCard.set(location, weather)
   }
 }
 
