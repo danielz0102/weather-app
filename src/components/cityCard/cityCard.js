@@ -1,10 +1,15 @@
 import './cityCard.css'
 import cityCard from './cityCard.html'
-import { parseHtml } from '@/modules/utils.js'
+import { parseHtml, getCelcius, getFarhenheit } from '@/modules/utils.js'
 import { getWeather } from '@/api/weather.js'
 
 const CityCard = parseHtml(cityCard)
+const Temp = CityCard.querySelector('.temp')
 const DEFAULT_CITY = 'London'
+const UNITS = {
+  C: 'C',
+  F: 'F',
+}
 const weather = await getWeather(DEFAULT_CITY)
 
 CityCard.set = (city, weather) => {
@@ -14,7 +19,12 @@ CityCard.set = (city, weather) => {
   }
 
   CityCard.querySelector('h2').textContent = city
-  CityCard.querySelector('.weather').textContent = `${weather}°`
+
+  if (Temp.unit === UNITS.C) {
+    weather = getCelcius(weather)
+  }
+
+  Temp.set(weather, Temp.unit)
 }
 
 CityCard.showError = (msg) => {
@@ -25,6 +35,14 @@ CityCard.showError = (msg) => {
   CityCard.querySelector('.weather').textContent = ''
 }
 
+Temp.unit = UNITS.F
+
+Temp.set = (degrees, unit) => {
+  Temp.textContent = `${degrees}°${unit}`
+  Temp.degrees = Number(degrees)
+  Temp.unit = unit
+}
+
 if (weather instanceof Error) {
   const status = weather.status
   CityCard.showError(
@@ -33,5 +51,16 @@ if (weather instanceof Error) {
 } else {
   CityCard.set(weather.address, weather.temp)
 }
+
+Temp.addEventListener('click', () => {
+  if (Temp.unit === UNITS.F) {
+    Temp.unit = UNITS.C
+    Temp.set(getCelcius(Temp.degrees), Temp.unit)
+    return
+  }
+
+  Temp.unit = UNITS.F
+  Temp.set(getFarhenheit(Temp.degrees), Temp.unit)
+})
 
 export { CityCard }

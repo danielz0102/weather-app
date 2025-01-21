@@ -22,9 +22,10 @@
   color: #e61c1c;
 }
 
-.weather {
+.temp {
   font-size: 3rem;
   background: var(--main-gradient);
   background-clip: text;
   color: transparent;
+  cursor: pointer;
 }
